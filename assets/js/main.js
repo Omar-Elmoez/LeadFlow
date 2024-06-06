@@ -2,8 +2,8 @@
 
 // Get params from URL
 const urlParams = new URLSearchParams(window.location.search);
-const cardId = urlParams.get("cardId");
-console.log("cardId is: ", cardId);
+const subject = urlParams.get("subject");
+console.log("subject is: ", subject);
 
 // ================ Open and Close Mobile Menu ================
 document.querySelector(".mobile-menu__close").addEventListener("click", () => {
@@ -196,7 +196,7 @@ forms.forEach((form) => {
       }
 
       if (stepNum === "1") {
-        data["cardId"] = cardId;
+        data["subject"] = subject;
       }
 
       console.log(data);
