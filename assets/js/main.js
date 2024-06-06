@@ -1,5 +1,10 @@
 // Your Leadflow repo
 
+// Get params from URL
+const urlParams = new URLSearchParams(window.location.search);
+const cardId = urlParams.get("cardId");
+console.log("cardId is: ", cardId);
+
 // ================ Open and Close Mobile Menu ================
 document.querySelector(".mobile-menu__close").addEventListener("click", () => {
   document.querySelector(".mobile-menu").classList.toggle("toggle");
@@ -188,6 +193,10 @@ forms.forEach((form) => {
 
       if (["3", "4", "5"].includes(stepNum)) {
         updateFormData(stepNum, data);
+      }
+
+      if (stepNum === "1") {
+        data["cardId"] = cardId;
       }
 
       console.log(data);
