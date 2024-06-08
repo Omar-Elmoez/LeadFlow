@@ -5,6 +5,19 @@ const urlParams = new URLSearchParams(window.location.search);
 const subject = urlParams.get("subject");
 console.log("subject is: ", subject);
 
+let userIP;
+
+// Get user IP
+fetch("https://api.ipify.org?format=json")
+  .then((response) => response.json())
+  .then((data) => {
+    userIP = data.ip;
+    console.log("User IP: ", userIP);
+  })
+  .catch((error) => {
+    console.error("Error fetching user IP: ", error);
+  });
+
 // ================ Open and Close Mobile Menu ================
 document.querySelector(".mobile-menu__close").addEventListener("click", () => {
   document.querySelector(".mobile-menu").classList.toggle("toggle");
@@ -55,41 +68,41 @@ inputFields.forEach((item) => {
 });
 
 // ================= Open & Close Step Menu =================
-const selectContainers = document.querySelectorAll(
-  ".step__input-container--select"
-);
-const options = document.querySelectorAll(".step__menu-option");
+// const selectContainers = document.querySelectorAll(
+//   ".step__input-container--select"
+// );
+// const options = document.querySelectorAll(".step__menu-option");
 
-for (let i = 0; i < selectContainers.length; i++) {
-  const selectContainer = selectContainers[i];
-  selectContainer.addEventListener("click", () => {
-    selectContainer.querySelector(".step__menu").classList.toggle("show");
-    selectContainer.querySelector(".step__icon").classList.toggle("rotate");
-  });
-}
+// for (let i = 0; i < selectContainers.length; i++) {
+//   const selectContainer = selectContainers[i];
+//   selectContainer.addEventListener("click", () => {
+//     selectContainer.querySelector(".step__menu").classList.toggle("show");
+//     selectContainer.querySelector(".step__icon").classList.toggle("rotate");
+//   });
+// }
 
-for (let i = 0; i < options.length; i++) {
-  const option = options[i];
-  const optionsList = option.parentElement;
+// for (let i = 0; i < options.length; i++) {
+//   const option = options[i];
+//   const optionsList = option.parentElement;
 
-  option.addEventListener("click", (e) => {
-    e.stopPropagation();
-    if (optionsList.classList.contains("show")) {
-      option.parentElement.classList.remove("show");
-      optionsList.parentElement
-        .querySelector(".step__icon")
-        .classList.remove("rotate");
+//   option.addEventListener("click", (e) => {
+//     e.stopPropagation();
+//     if (optionsList.classList.contains("show")) {
+//       option.parentElement.classList.remove("show");
+//       optionsList.parentElement
+//         .querySelector(".step__icon")
+//         .classList.remove("rotate");
 
-      optionsList.parentElement.querySelector(".step__hidden-input").value =
-        option.dataset.value;
-      optionsList.parentElement.querySelector(".step__label--one").innerHTML =
-        option.textContent;
-      optionsList.parentElement.querySelector(".step__label--one").style.color =
-        "var(--primary-color)";
-      optionsList.parentElement.classList.remove("error");
-    }
-  });
-}
+//       optionsList.parentElement.querySelector(".step__hidden-input").value =
+//         option.dataset.value;
+//       optionsList.parentElement.querySelector(".step__label--one").innerHTML =
+//         option.textContent;
+//       optionsList.parentElement.querySelector(".step__label--one").style.color =
+//         "var(--primary-color)";
+//       optionsList.parentElement.classList.remove("error");
+//     }
+//   });
+// }
 
 const paymentFields = document.querySelectorAll(".payment__input-field");
 
@@ -197,6 +210,7 @@ forms.forEach((form) => {
 
       if (stepNum === "1") {
         data["subject"] = subject;
+        data["user_ip"] = userIP;
       }
 
       console.log(data);
