@@ -123,7 +123,6 @@ forms.forEach((form) => {
 
     if (validateStep(stepNum)) {
       if (stepNum === "1") {
-        data["subject"] = subject;
         form_type = data.form_type;
         track_id = data.track;
 
@@ -136,6 +135,7 @@ forms.forEach((form) => {
         data["user_ip"] = userIP;
         data["form_type"] = form_type;
         data["track"] = track_id;
+        data["subject"] = subject;
 
         data["whatsapp"] = iti.getNumber();
 
