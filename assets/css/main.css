@@ -18,10 +18,6 @@ body {
   min-height: 100dvh;
 }
 
-main {
-  flex-grow: 1;
-}
-
 img {
   max-width: 100%;
 }
@@ -68,13 +64,7 @@ textarea {
 
 /* ================= Reusable Classes =============== */
 .step__label-box {
-  position: relative;
-  background-color: #fff;
-  border-radius: 1rem;
-  color: var(--primary-color);
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
-  padding: 1rem 1.5rem;
-  font-size: 1.125rem;
 }
 
 .flex {
@@ -226,9 +216,9 @@ textarea {
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 991px) {
+@media (width < 991px) {
   .header--bottom .container {
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -402,41 +392,46 @@ textarea {
 /* =================== Main =================== */
 main {
   color: var(--primary-color);
-  padding-block: 5rem;
+  padding-block: 5rem 2rem;
+  flex-grow: 1;
 }
 
-.steps-names {
+@media (width < 991px) {
+  main {
+    padding-block: 2rem;
+  }
+}
+
+.progress-wrapper {
   font-weight: 500;
   display: flex;
+  flex-direction: column;
   position: relative;
 }
 
-.steps-names > span {
+.progress-steps {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.progress-steps > span {
   flex: 1;
   text-align: center;
 }
 
 @media (max-width: 991px) {
-  .steps-names > span {
+  .progress-steps > span {
     visibility: hidden;
+    position: absolute;
   }
 }
 
 .progress-container {
-  position: absolute;
-  top: -100%;
-  left: 0;
   width: 100%;
   height: 0.75rem;
   background-color: var(--secondary-color);
   border-radius: 999px;
   overflow: hidden;
-}
-
-@media (max-width: 991px) {
-  .progress-container {
-    top: 0;
-  }
 }
 
 .progress-bar {
@@ -460,6 +455,18 @@ main {
   transform: translateY(-50%);
 }
 
+.form__title {
+  color: var(--main-color);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+@supports (text-wrap: balance) {
+  .form__title {
+    text-wrap: balance;
+  }
+}
+
 .contact_form {
   font-size: 1.1rem;
 }
@@ -474,7 +481,7 @@ main {
 @media (max-width: 991px) {
   .form__step {
     flex-direction: column-reverse;
-    margin-top: 0;
+    margin-top: 2.5rem;
   }
 }
 
@@ -502,20 +509,29 @@ main {
   }
 }
 
-.step__input-container,
+.iti,
+.step__input,
 .step__textarea-container {
   border: 1.5px solid var(--secondary-color);
   border-radius: 4px;
+  color: var(--primary-color);
+}
+
+.step__input,
+.step__textarea-container {
   padding: 0.75rem 1rem;
   overflow: hidden;
-  color: var(--secondary-color);
+  text-indent: 1rem;
 }
 
 .step__input-container {
   position: relative;
+  display: grid;
+  gap: 0.8rem;
 }
 
-.step__input-container.error,
+.iti.error,
+.step__input.error,
 .payment__input-box.error {
   border: 2px solid red;
   animation: shake 0.2s ease-in-out;
@@ -539,7 +555,16 @@ main {
   color: var(--primary-color);
 }
 
-.error-msg {
+.article__sub-title {
+  color: #f72c2c;
+  font-size: 1rem;
+  font-weight: 500;
+  display: block;
+  margin-top: -5px;
+}
+
+.error-msg,
+.error-msg--phone {
   color: red;
   margin-right: 0.5rem;
   font-size: 1.125rem;
@@ -549,6 +574,8 @@ main {
 
 .step__label--one {
   position: relative;
+  color: #a0a1a7;
+  font-size: 1.125rem;
 }
 
 .label__asterisk {
@@ -559,14 +586,18 @@ main {
   margin-right: 0.5rem;
 }
 
-.step__input {
-  position: absolute;
-  inset: 0;
-  text-indent: 1rem;
+.step__input--tel {
+  width: calc(100% - 5rem);
+  border: none;
 }
 
-.step__input::placeholder {
-  visibility: hidden;
+[dir="rtl"] .iti--allow-dropdown .iti__country-container {
+  left: 1rem;
+  right: auto;
+}
+
+.iti__selected-country {
+  flex-direction: row-reverse;
 }
 
 .step__input-container--select {
@@ -697,22 +728,84 @@ main {
   }
 }
 
+.step__options--subscription {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 991px) {
+  .step__options--subscription {
+    grid-auto-flow: row;
+  }
+}
+
+.step__options--classesNumber {
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
 .step__label {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   min-width: calc(100% / 3 - 1rem);
+  position: relative;
+  background-color: #fff;
+  border-radius: 1rem;
+  color: var(--primary-color);
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
+  padding: 1rem 1.5rem;
+  font-size: 1.125rem;
+  flex-wrap: wrap;
+  white-space: nowrap;
+}
+
+@media (width > 991px) {
+  .step__label--identification {
+    width: 110px;
+  }
+}
+
+.step__label-header {
+  width: 350px;
+  flex: 1;
+}
+
+.step__label-title {
+  margin-top: auto;
+}
+
+.session_description {
+  text-align: center;
+  white-space: normal;
+  flex: 1;
+}
+
+.session_title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--main-color);
+  text-align: center;
+}
+
+.session_number {
+  display: block;
 }
 
 .subject-img {
   width: 50px;
+  display: block;
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
 }
 
 .step__label:has(input:checked) {
   border: 1px solid var(--main-color);
   background-color: #e8fcf1;
+  text-align: center;
 }
 
 .correct-icon {
@@ -734,20 +827,78 @@ main {
   cursor: pointer;
 }
 
+.custom-count {
+  min-width: 250px;
+  border: none;
+  border-radius: 1rem;
+}
+
 /* =================== Subscription =================== */
 .subscription_label {
-  gap: 0;
-  align-items: flex-start;
-  min-width: 0;
+  display: block;
 }
+
+.subscription_label.best-value {
+  background-color: #e8fcf1;
+}
+
+.subscription__top-box {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (width < 991px) {
+  .subscription__top-box {
+    flex-direction: column-reverse;
+  }
+}
+
+.subscription__top-box > div {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-direction: column;
+}
+
+.subscription__bottom-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.subscription__bottom-box--right {
+  border-right: 4px solid var(--main-color);
+  padding-right: 0.5rem;
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.subscription_title {
+  font-weight: 700;
+}
+
 .subscription_discount {
-  background-color: #ffc5c5;
-  color: #e11d48;
+  background-color: #ffe6ce;
+  color: #ee7214;
   font-size: 0.875rem;
   font-weight: 700;
+  /* min-width: 12.5rem; 200px */
   width: 100%;
   text-align: center;
-  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.best-value .subscription_discount {
+  background-color: var(--main-color);
+  color: #fff;
 }
 
 .subscription_duration {
@@ -755,10 +906,72 @@ main {
   font-size: 1rem;
 }
 
+.subscription_price--box {
+  max-width: 12.5rem;
+  text-align: center;
+  flex: 1;
+}
+
 .subscription_price {
-  border-right: 4px solid var(--main-color);
   font-weight: 700;
-  padding-right: 0.5rem;
+  display: block;
+}
+
+.subscription_price--prev {
+  color: #a0a1a7;
+  text-decoration: line-through;
+}
+
+.subscription_price--class span {
+  font-weight: 700;
+}
+
+/* =================== Card Badge =================== */
+.card__badge {
+  --bg-color: linear-gradient(
+    135deg,
+    #ff2929 -7.27%,
+    #9e0000 58.57%,
+    #b30000 118%
+  );
+
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card__badge::after {
+  content: "المفضلة";
+  position: absolute;
+  height: 35px;
+  width: 130%;
+  background-image: var(--bg-color);
+  transform: rotate(-45deg) translateY(-25px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.card__badge::before {
+  content: "";
+  position: absolute;
+  height: 19px;
+  width: 12px;
+  background-image: var(--bg-color);
+  box-shadow: 131px -131px 0 #9e0000;
+  left: -1px;
+  bottom: 9px;
+  z-index: -1;
 }
 
 /* =================== Payment ==================== */
@@ -867,7 +1080,7 @@ main {
 
 .rules__checkbox {
   appearance: none;
-  border: 2px solid #6F6F6F;
+  border: 2px solid #6f6f6f;
   border-radius: 2px;
   width: 1rem;
   height: 1rem;
