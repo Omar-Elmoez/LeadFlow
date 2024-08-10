@@ -3,7 +3,7 @@ const baseUrl = "https://elmadrasah-326ff588fbb4.herokuapp.com/";
 // Get params from URL
 const urlParams = new URLSearchParams(window.location.search);
 const subject = urlParams.get("subject");
-console.log(urlParams);
+console.log(subject);
 
 let userIP;
 
