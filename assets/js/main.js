@@ -11,6 +11,8 @@ console.log('User came from: ' + referrer);
 const url = window.location.href;
 console.log(url);
 
+console.log('full_url', localStorage.getItem('full_url'));
+
 // Get user IP
 fetch("https://api.ipify.org?format=json")
   .then((response) => response.json())
