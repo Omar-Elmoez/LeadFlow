@@ -5,13 +5,9 @@ const urlParams = new URLSearchParams(window.location.search);
 const subject = urlParams.get("subject");
 console.log(subject);
 
-let fullReferrer = document.referrer;
-let referrerURL = new URL(fullReferrer);
-let exactPath = referrerURL.pathname + referrerURL.search;
 
-console.log(exactPath);
-
-let userIP;
+const url = window.location.href;
+console.log(url);
 
 // Get user IP
 fetch("https://api.ipify.org?format=json")
