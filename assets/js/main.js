@@ -5,8 +5,11 @@ const urlParams = new URLSearchParams(window.location.search);
 const subject = urlParams.get("subject");
 console.log(subject);
 
-let referrer = document.referrer;
-console.log(referrer);
+let fullReferrer = document.referrer;
+let referrerURL = new URL(fullReferrer);
+let exactPath = referrerURL.pathname + referrerURL.search;
+
+console.log(exactPath);
 
 let userIP;
 
