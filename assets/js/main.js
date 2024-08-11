@@ -5,6 +5,9 @@ const urlParams = new URLSearchParams(window.location.search);
 const subject = urlParams.get("subject");
 console.log(subject);
 
+let referrer = document.referrer;
+console.log(referrer);
+
 let userIP;
 
 // Get user IP
