@@ -6,6 +6,8 @@ const subject = urlParams.get("subject");
 console.log(subject);
 
 
+const referrer = document.referrer;
+console.log('User came from: ' + referrer);
 const url = window.location.href;
 console.log(url);
 
