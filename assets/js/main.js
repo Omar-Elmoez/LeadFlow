@@ -15,12 +15,14 @@ gtag('config', 'G-VGYJMSTP2D', { 'debug_mode': true });
 //   });
 // });
 
-document.querySelectorAll('.btn').addEventListener('click', function() {
-  gtag('event', 'click', {
-    'event_category': 'button',
-    'event_label': 'myButton'
-  });
-})
+Array.from(document.querySelectorAll('.btn')).map(item => 
+  item.addEventListener('click', function() {
+    gtag('event', 'click', {
+      'event_category': 'button',
+      'event_label': 'myButton'
+    });
+  })
+)
 
 const referrer = document.referrer;
 console.log('User came from: ' + referrer);
