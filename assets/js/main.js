@@ -5,6 +5,9 @@ const urlParams = new URLSearchParams(window.location.search);
 const subject = urlParams.get("subject");
 console.log(subject);
 
+gtag('config', 'G-VGYJMSTP2D', { 'debug_mode': true });
+
+
 
 const referrer = document.referrer;
 console.log('User came from: ' + referrer);

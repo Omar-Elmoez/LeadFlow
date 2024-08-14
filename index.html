@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="./assets/images/leadflow-favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="./assets/images/leadflow-favicon.svg"
+    />
     <title>Elmadrasah-LeadFlow</title>
     <!-- ================= Tajawal Font ================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,6 +16,19 @@
       href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <!-- GA4 Tracking Code -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-VGYJMSTP2D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-VGYJMSTP2D");
+    </script>
 
     <!-- ================= For getting international phone number ================= -->
     <!-- ================= intl-tel-input Styles ================= -->
@@ -25,7 +42,7 @@
   </head>
 
   <body>
-     <header>
+    <header>
       <article class="header--bottom">
         <section class="container flex">
           <a href="https://elmadrasah.com/" class="header__logo">
@@ -33,11 +50,10 @@
           </a>
         </section>
       </article>
-    </header> 
+    </header>
 
     <main>
       <div class="container">
-
         <h1 class="form__title">خصص رحلتك الدراسية مع المدرسة.كوم</h1>
 
         <section class="container progress-wrapper">
@@ -114,10 +130,7 @@
                       alt="correct icon"
                       class="correct-icon"
                     />
-                    <img
-                      src="./assets/images/parent.webp"
-                      alt="family icon"
-                    />
+                    <img src="./assets/images/parent.webp" alt="family icon" />
                     ولى أمر
                     <input
                       type="radio"
@@ -274,9 +287,7 @@
         <div class="form__step" id="step3" style="display: none">
           <section class="step__controllers">
             <form method="post" class="contact_form">
-              <section class="fields">
-
-              </section>
+              <section class="fields"></section>
               <button
                 type="submit"
                 class="btn submit-btn"
@@ -321,7 +332,7 @@
                 التالي
               </button>
             </form>
-          </section> 
+          </section>
 
           <section class="step__img-box">
             <div class="step__modal-box">
@@ -455,8 +466,7 @@
 
               <article class="form__step--article subscription">
                 <h2 class="article__title"></h2>
-                <div class="step__options step__options--radio">
-                </div>
+                <div class="step__options step__options--radio"></div>
               </article>
 
               <button
