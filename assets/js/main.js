@@ -7,7 +7,20 @@ console.log(subject);
 
 gtag('config', 'G-VGYJMSTP2D', { 'debug_mode': true });
 
+// Example: Track a button click event
+// document.getElementById('myButton').addEventListener('click', function() {
+//   gtag('event', 'click', {
+//     'event_category': 'button',
+//     'event_label': 'myButton'
+//   });
+// });
 
+document.querySelectorAll('.btn').addEventListener('click', function() {
+  gtag('event', 'click', {
+    'event_category': 'button',
+    'event_label': 'myButton'
+  });
+})
 
 const referrer = document.referrer;
 console.log('User came from: ' + referrer);
